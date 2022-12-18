@@ -1,13 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Counter = () => {
-const [value, setValue] = useState(0);
+    const [name, setName] = useState('');
+    const [nickname, setNickname] = useState('');
+
+    const onChangeName = e => {
+        setName(e.target.value);
+    }
+
+    const onChangeNickname = e => {
+        setNickname(e.target.value);
+    }
+
+    useEffect(() => {
+        console.log("렌더링이 완료되었습니다!");
+        console.log({
+            name,
+            nickname
+    });
+    });
 
   return (
     <>
-    <h1>현재 카운터 값은 [{value}]입니다.</h1>
-    <button onClick={() => setValue(value + 1)}>+1</button>
-    <button onClick={() => setValue(value - 1)}>-1</button>
+    <div>
+       <input value = {name} onChange={onChangeName}></input>
+       <input value = {nickname} onChange={onChangeNickname}></input>
+    </div>
     </>
   );
 };
